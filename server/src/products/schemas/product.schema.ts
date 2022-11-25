@@ -26,6 +26,9 @@ export class Product {
   @Prop({ required: true })
   slug: string;
 
+  @Prop()
+  image: string;
+
   @Prop({ required: true })
   category: string;
 

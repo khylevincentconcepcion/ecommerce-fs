@@ -13,6 +13,7 @@ export interface IProduct {
   _id: string;
   name: string;
   slug: string;
+  image: string;
   category: string;
   price: number;
   stocks: number;
@@ -28,21 +29,5 @@ export interface IProduct {
 }
 
 export interface Props {
-  product: {
-    _id: string;
-    name: string;
-    slug: string;
-    category: string;
-    price: number;
-    stocks: number;
-    description: string;
-    currentSold: number;
-    totalSold: number;
-    ratings: number;
-    totalReviews: number;
-    reviews: ProductReviews[];
-    created_at: string;
-    updated_at: string;
-    __v: number;
-  };
+  product: IProduct;
 }

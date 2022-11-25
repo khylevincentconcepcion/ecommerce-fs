@@ -1,5 +1,5 @@
 import { FormEvent } from "react";
-import { Box, TextField } from "@mui/material";
+import SearchIcon from "@mui/icons-material/Search";
 
 const SearchBar = () => {
   const submitHandler = (e: FormEvent): void => {
@@ -7,9 +7,17 @@ const SearchBar = () => {
   };
 
   return (
-    <Box component="form">
-      <TextField id="search" label="search..." variant="standard" />
-    </Box>
+    <form className="flex items-center border rounded-sm">
+      <input
+        name="search"
+        id="search"
+        placeholder="Search..."
+        className="w-20 h-8 p-2 transition-width ease-in-out duration-150 focus:w-28 focus:outline-none md:w-32 md:focus:w-40"
+      />
+      <button>
+        <SearchIcon />
+      </button>
+    </form>
   );
 };
 

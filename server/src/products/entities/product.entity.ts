@@ -24,6 +24,9 @@ export class IProduct {
   slug: string;
 
   @IsString()
+  image: string;
+
+  @IsString()
   @IsNotEmpty()
   category: string;
 
