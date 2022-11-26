@@ -2,6 +2,7 @@ import React from "react";
 import Product from "../../features/Product";
 import { useGetAllProductsQuery } from "../../features/Product/index.slice";
 import { Skeleton } from "@mui/material";
+import Slider from "../../components/Slider";
 
 const HomePage = () => {
   const {
@@ -28,10 +29,13 @@ const HomePage = () => {
           ))}
         </div>
       ) : isSuccess ? (
-        <div className="container mx-auto p-6 grid justify-center gap-4 grid-cols-2 sm:grid-cols-4 lg:grid-cols-6">
-          {products.map((product) => (
-            <Product product={product} key={product._id} />
-          ))}
+        <div className="container mx-auto p-6 pt-0">
+          <Slider />
+          <div className="grid justify-center gap-4 grid-cols-2 sm:grid-cols-4 lg:grid-cols-6">
+            {products.map((product) => (
+              <Product product={product} key={product._id} />
+            ))}
+          </div>
         </div>
       ) : null}
     </>

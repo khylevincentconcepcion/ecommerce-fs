@@ -1,19 +1,31 @@
 import React from "react";
 import Header from "./components/Header";
-import { Routes, Route } from "react-router-dom";
+import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import HomePage from "./pages/HomePage";
 import ProductPage from "./pages/ProductPage";
+import Layout from "./components/Layout";
+
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <Layout />,
+    children: [
+      {
+        path: "/",
+        element: <HomePage />,
+      },
+      {
+        path: "product/:slug",
+        element: <ProductPage />,
+      },
+    ],
+  },
+]);
 
 const App = () => {
   return (
     <div>
-      <Header />
-      <Routes>
-        <Route path="/">
-          <Route index element={<HomePage />} />
-          <Route path="/:slug" element={<ProductPage />} />
-        </Route>
-      </Routes>
+      <RouterProvider router={router} />
     </div>
   );
 };
