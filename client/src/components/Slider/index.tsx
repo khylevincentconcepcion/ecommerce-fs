@@ -28,6 +28,13 @@ const Slider = () => {
     setCurrentSlide(currentSlide === 4 ? 0 : currentSlide + 1);
   };
 
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentSlide(currentSlide === 4 ? 0 : currentSlide + 1);
+    }, 3000);
+    return () => clearInterval(interval);
+  }, [currentSlide]);
+
   return (
     <div className="relative w-full h-[calc(100vh-82px)]">
       <div className="overflow-hidden w-full h-full">
@@ -49,11 +56,17 @@ const Slider = () => {
           ))}
         </div>
       </div>
-      <div className="flex justify-center w-full absolute bottom-10">
-        <button className="p-6" onClick={prevSlide}>
+      <div className="flex justify-center gap-6 w-full absolute bottom-8">
+        <button
+          className="p-4 border rounded-sm backdrop-blur-lg bg-white/30"
+          onClick={prevSlide}
+        >
           <ArrowBackIosOutlinedIcon />
         </button>
-        <button className="p-6" onClick={nextSlide}>
+        <button
+          className="p-4 border rounded-sm backdrop-blur-lg bg-white/30"
+          onClick={nextSlide}
+        >
           <ArrowForwardIosOutlinedIcon />
         </button>
       </div>

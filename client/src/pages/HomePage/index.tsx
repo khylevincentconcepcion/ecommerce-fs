@@ -3,6 +3,8 @@ import Product from "../../features/Product";
 import { useGetAllProductsQuery } from "../../features/Product/index.slice";
 import { Skeleton } from "@mui/material";
 import Slider from "../../components/Slider";
+import FeaturedProducts from "../../components/FeaturedProducts";
+import Category from "../../components/Category";
 
 const HomePage = () => {
   const {
@@ -31,11 +33,9 @@ const HomePage = () => {
       ) : isSuccess ? (
         <div className="container mx-auto p-6 pt-0">
           <Slider />
-          <div className="grid justify-center gap-4 grid-cols-2 sm:grid-cols-4 lg:grid-cols-6">
-            {products.map((product) => (
-              <Product product={product} key={product._id} />
-            ))}
-          </div>
+          <FeaturedProducts name="Featured" products={products} />
+          <Category />
+          <FeaturedProducts name="Trending" products={products} />
         </div>
       ) : null}
     </>
