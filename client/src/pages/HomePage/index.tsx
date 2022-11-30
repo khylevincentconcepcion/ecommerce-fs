@@ -5,6 +5,7 @@ import { Skeleton } from "@mui/material";
 import Slider from "../../components/Slider";
 import FeaturedProducts from "../../components/FeaturedProducts";
 import Category from "../../components/Category";
+import Contact from "../../components/Contact";
 
 const HomePage = () => {
   const {
@@ -36,6 +37,7 @@ const HomePage = () => {
           <FeaturedProducts name="Featured" products={products} />
           <Category />
           <FeaturedProducts name="Trending" products={products} />
+          <Contact />
         </div>
       ) : null}
     </>
