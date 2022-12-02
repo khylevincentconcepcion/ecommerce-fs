@@ -2,7 +2,7 @@ import { FC } from "react";
 import { Link } from "react-router-dom";
 import { Props } from "./index.type";
 
-const productsData = [
+const productsImg = [
   "https://images.pexels.com/photos/9558787/pexels-photo-9558787.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
   "https://images.pexels.com/photos/158648/girl-coat-old-coat-brown-coat-158648.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
   "https://images.pexels.com/photos/1007017/pexels-photo-1007017.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
@@ -32,7 +32,7 @@ const FeaturedProducts: FC<Props> = ({ name, products }) => {
                 New Arrival
               </span>
               <img
-                src={productsData[i]}
+                src={productsImg[i]}
                 alt="Image from Pexels"
                 className="object-cover w-full"
               />
@@ -51,7 +51,7 @@ const FeaturedProducts: FC<Props> = ({ name, products }) => {
               className="border relative"
             >
               <img
-                src={productsData[i]}
+                src={productsImg[i]}
                 alt="Image from Pexels"
                 className="object-cover w-full"
               />
