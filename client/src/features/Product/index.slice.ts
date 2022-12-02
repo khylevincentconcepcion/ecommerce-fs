@@ -19,8 +19,59 @@ export const productApiSLice = apiSlice.injectEndpoints({
       providesTags: (result, error, id) => [{ type: "Product", id }],
       transformResponse: (response: IProduct) => response,
     }),
+    getProductId: builder.query<IProduct, string>({
+      query: (id) => `/api/products/${id}`,
+      providesTags: (result, error, id) => [{ type: "Product", id }],
+      transformResponse: (response: IProduct) => response,
+    }),
+    createProduct: builder.mutation<IProduct, Partial<IProduct>>({
+      query: (post) => {
+        return {
+          url: "/api/products",
+          method: "POST",
+          body: post,
+        };
+      },
+      invalidatesTags: [{ type: "Product", id: "List" }],
+      transformResponse: (response: IProduct) => response,
+    }),
+    updateProduct: builder.mutation<
+      IProduct,
+      { id: string; post: Partial<IProduct> }
+    >({
+      query: ({ id, post }) => {
+        return {
+          url: `/api/products/${id}`,
+          method: "PATCH",
+          body: post,
+        };
+      },
+      invalidatesTags: (result, error, { id }) =>
+        result
+          ? [
+              { type: "Product", id },
+              { type: "Product", id: "List" },
+            ]
+          : [{ type: "Product", id: "List" }],
+      transformResponse: (response: IProduct) => response,
+    }),
+    deleteProduct: builder.mutation<IProduct, string>({
+      query: (id) => {
+        return {
+          url: `/api/products/${id}`,
+          method: "DELETE",
+        };
+      },
+      invalidatesTags: [{ type: "Product", id: "List" }],
+    }),
   }),
 });
 
-export const { useGetAllProductsQuery, useGetProductSlugQuery } =
-  productApiSLice;
+export const {
+  useGetAllProductsQuery,
+  useGetProductSlugQuery,
+  useGetProductIdQuery,
+  useCreateProductMutation,
+  useUpdateProductMutation,
+  useDeleteProductMutation,
+} = productApiSLice;
