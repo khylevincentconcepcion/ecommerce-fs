@@ -25,13 +25,12 @@ export const productApiSLice = apiSlice.injectEndpoints({
       transformResponse: (response: IProduct) => response,
     }),
     createProduct: builder.mutation<IProduct, Partial<IProduct>>({
-      query: (post) => {
-        return {
-          url: "/api/products",
-          method: "POST",
-          body: post,
-        };
-      },
+      query: (post) => ({
+        url: "/api/products",
+        method: "POST",
+        body: post,
+        credentials: "include",
+      }),
       invalidatesTags: [{ type: "Product", id: "List" }],
       transformResponse: (response: IProduct) => response,
     }),
@@ -39,13 +38,12 @@ export const productApiSLice = apiSlice.injectEndpoints({
       IProduct,
       { id: string; post: Partial<IProduct> }
     >({
-      query: ({ id, post }) => {
-        return {
-          url: `/api/products/${id}`,
-          method: "PATCH",
-          body: post,
-        };
-      },
+      query: ({ id, post }) => ({
+        url: `/api/products/${id}`,
+        method: "PATCH",
+        body: post,
+        credentials: "include",
+      }),
       invalidatesTags: (result, error, { id }) =>
         result
           ? [
@@ -56,12 +54,11 @@ export const productApiSLice = apiSlice.injectEndpoints({
       transformResponse: (response: IProduct) => response,
     }),
     deleteProduct: builder.mutation<IProduct, string>({
-      query: (id) => {
-        return {
-          url: `/api/products/${id}`,
-          method: "DELETE",
-        };
-      },
+      query: (id) => ({
+        url: `/api/products/${id}`,
+        method: "DELETE",
+        credentials: "include",
+      }),
       invalidatesTags: [{ type: "Product", id: "List" }],
     }),
   }),

@@ -5,6 +5,8 @@ import HomePage from "./pages/HomePage";
 import ProductPage from "./pages/ProductPage";
 import Layout from "./components/Layout";
 import CreateProductPage from "./pages/CreateProductPage";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const router = createBrowserRouter([
   {
@@ -30,6 +32,7 @@ const router = createBrowserRouter([
 const App = () => {
   return (
     <div>
+      <ToastContainer position="bottom-center" limit={1} autoClose={1500} />
       <RouterProvider router={router} />
     </div>
   );

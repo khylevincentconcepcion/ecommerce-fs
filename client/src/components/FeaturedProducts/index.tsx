@@ -1,4 +1,3 @@
-import { FC } from "react";
 import { Link } from "react-router-dom";
 import { Props } from "./index.type";
 
@@ -9,7 +8,7 @@ const productsImg = [
   "https://images.pexels.com/photos/10370348/pexels-photo-10370348.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
 ];
 
-const FeaturedProducts: FC<Props> = ({ name, products }) => {
+const FeaturedProducts = ({ name, products }: Props) => {
   return (
     <div className="py-6">
       <div className="flex mb-6">
