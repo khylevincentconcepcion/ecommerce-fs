@@ -35,12 +35,13 @@ const CreateProductPage = () => {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm({
+  } = useForm<ICreateProduct>({
     resolver: zodResolver(createProductSchema),
   });
 
   const submitHandler: SubmitHandler<ICreateProduct> = (data) => {
-    createProduct(data);
+    console.log(data);
+    // createProduct(data);
   };
 
   return (
